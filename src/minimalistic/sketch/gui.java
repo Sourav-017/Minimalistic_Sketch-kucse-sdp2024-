@@ -26,6 +26,11 @@ public class gui extends JFrame {
             new gui().setVisible(true);
         });
     }
+    
+    
+    //hello world
+    
+    
 
     private static class MyCanvas extends JPanel {
         private List<Point> currentLine;
