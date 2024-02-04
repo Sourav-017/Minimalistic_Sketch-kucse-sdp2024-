@@ -8,34 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class gui extends JFrame {
-    private MyCanvas canvas;
-
-    public gui() {
-        setTitle("Front Page");
-        setSize(900, 480);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        canvas = new MyCanvas();
-        canvas.setBackground(Color.BLACK);
-
-        getContentPane().add(canvas, BorderLayout.CENTER);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new gui().setVisible(true);
-        });
-    }
-    
-    
-    //hello world
-    
-    
-
     private static class MyCanvas extends JPanel {
-        private List<Point> currentLine;
-        private List<List<Point>> lines;
-        private int brushSize = 5; // Adjust the brush size here
+         List<Point> currentLine;
+         List<List<Point>> lines;
+         int brushSize = 5; // Adjust the brush size here
 
         public MyCanvas() {
             lines = new ArrayList<>();
@@ -45,6 +21,7 @@ public class gui extends JFrame {
                 public void mousePressed(MouseEvent e) {
                     currentLine = new ArrayList<>();
                     addPoint(e.getX(), e.getY());
+                    repaint();
                 }
 
                 @Override
@@ -74,9 +51,6 @@ public class gui extends JFrame {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.CYAN);
 
-            // Set the brush size
-            Stroke oldStroke = g2d.getStroke();
-            g2d.setStroke(new BasicStroke(brushSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
             // Draw all lines
             for (List<Point> line : lines) {
@@ -93,9 +67,28 @@ public class gui extends JFrame {
                 Point p2 = currentLine.get(i);
                 g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
             }
-
-            // Reset the brush size
-            g2d.setStroke(oldStroke);
+            
         }
     }
+    
+    MyCanvas canvas;
+
+    public gui() {
+        setTitle("Front Page");
+        setSize(900, 480);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        canvas = new MyCanvas();
+        canvas.setBackground(Color.BLACK);
+
+        getContentPane().add(canvas, BorderLayout.CENTER);
+    }
+
+    public static void main(String[] args) {
+       
+        gui screen =  new gui();
+        screen.setVisible(true);
+        
+    }
+    
 }
