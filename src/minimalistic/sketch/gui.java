@@ -84,11 +84,6 @@ public class gui extends JFrame {
         getContentPane().add(canvas, BorderLayout.CENTER);
     }
 
-    public static void main(String[] args) {
-       
-        gui screen =  new gui();
-        screen.setVisible(true);
-        
-    }
+
     
 }
