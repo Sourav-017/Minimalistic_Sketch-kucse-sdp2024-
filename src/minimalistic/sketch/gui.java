@@ -2,75 +2,16 @@ package minimalistic.sketch;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 public class gui extends JFrame {
-    private static class MyCanvas extends JPanel {
-         List<Point> currentLine;
-         List<List<Point>> lines;
-         int brushSize = 5; // Adjust the brush size here
-
-        public MyCanvas() {
-            lines = new ArrayList<>();
-
-            addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    currentLine = new ArrayList<>();
-                    addPoint(e.getX(), e.getY());
-                    repaint();
-                }
-
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                    lines.add(new ArrayList<>(currentLine));
-                    repaint();
-                }
-            });
-
-            addMouseMotionListener(new MouseAdapter() {
-                @Override
-                public void mouseDragged(MouseEvent e) {
-                    addPoint(e.getX(), e.getY());
-                    repaint();
-                }
-            });
-        }
-
-        private void addPoint(int x, int y) {
-            currentLine.add(new Point(x, y));
-        }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setColor(Color.CYAN);
-
-
-            // Draw all lines
-            for (List<Point> line : lines) {
-                for (int i = 1; i < line.size(); i++) {
-                    Point p1 = line.get(i - 1);
-                    Point p2 = line.get(i);
-                    g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
-                }
-            }
-
-            // Draw the current line
-            for (int i = 1; i < currentLine.size(); i++) {
-                Point p1 = currentLine.get(i - 1);
-                Point p2 = currentLine.get(i);
-                g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
-            }
-            
-        }
-    }
-    
     MyCanvas canvas;
 
     public gui() {
@@ -81,9 +22,43 @@ public class gui extends JFrame {
         canvas = new MyCanvas();
         canvas.setBackground(Color.BLACK);
 
+        // Create a panel for saving functionality
+        JPanel savePanel = new JPanel();
+        JButton saveButton = new JButton("Save");
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    saveImage();
+                } catch (IOException ex) {
+                    Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        savePanel.add(saveButton);
+
+        getContentPane().setLayout(new BorderLayout());
         getContentPane().add(canvas, BorderLayout.CENTER);
+        getContentPane().add(savePanel, BorderLayout.SOUTH);
     }
 
+    private void saveImage() throws IOException {
+        BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2 = image.createGraphics();
+        canvas.paint(g2);
+        g2.dispose();
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Save Image");
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            ImageIO.write(image, "jpg", fileToSave);
+            JOptionPane.showMessageDialog(this, "Image saved successfully!");
+        }
+    }
 
-    
+    public static void main(String[] args) {
+        gui screen = new gui();
+        screen.setVisible(true);
+    }
 }
