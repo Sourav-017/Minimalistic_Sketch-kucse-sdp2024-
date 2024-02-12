@@ -56,9 +56,9 @@ public class gui extends JFrame {
             JOptionPane.showMessageDialog(this, "Image saved successfully!");
         }
     }
-
-    public static void main(String[] args) {
-        gui screen = new gui();
-        screen.setVisible(true);
-    }
+//
+//    public static void main(String[] args) {
+//        gui screen = new gui();
+//        screen.setVisible(true);
+//    }
 }
