@@ -67,7 +67,11 @@ public class MyCanvas extends JPanel {
         scale /= 1.1;
         repaint();
     }
-
+    public void clear() {
+        lines.clear();
+        currentLine = null;
+        repaint();
+    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

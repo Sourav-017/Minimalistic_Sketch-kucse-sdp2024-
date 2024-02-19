@@ -50,7 +50,22 @@ public class gui extends JFrame {
             }
         });
         buttonPanel.add(zoomOutButton);
-
+            JButton clearButton = new JButton("Clear");
+            clearButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    canvas.clear();
+                }
+            });
+            buttonPanel.add(clearButton);
+            JButton exitButton = new JButton("Exit");
+            exitButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0);
+                }
+            });
+             buttonPanel.add(exitButton);
         // Add the canvas to the center and button panel to the south of the JFrame
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(canvas, BorderLayout.CENTER);
