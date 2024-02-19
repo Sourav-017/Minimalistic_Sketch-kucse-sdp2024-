@@ -2,6 +2,10 @@ package minimalistic.sketch;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class gui extends JFrame {
     MyCanvas canvas;
@@ -56,12 +60,34 @@ public class gui extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    private void saveImage() {
-        // Save image logic
+    public void saveImage() {
+        BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2 = image.createGraphics();
+        canvas.paint(g2);
+        g2.dispose();
+
+        try {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Save Image");
+            int userSelection = fileChooser.showSaveDialog(this);
+
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                File fileToSave = fileChooser.getSelectedFile();
+                String filePath = fileToSave.getAbsolutePath();
+                if (!filePath.endsWith(".jpg")) {
+                    filePath += ".jpg";
+                    fileToSave = new File(filePath);
+                }
+                ImageIO.write(image, "jpg", fileToSave);
+                JOptionPane.showMessageDialog(this, "Image saved successfully!");
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error occurred while saving image: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    public static void main(String[] args) {
-        gui screen = new gui();
-        screen.setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        gui screen = new gui();
+//        screen.setVisible(true);
+//    }
 }
