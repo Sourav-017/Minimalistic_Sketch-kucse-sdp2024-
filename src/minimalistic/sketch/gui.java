@@ -1,64 +1,67 @@
 package minimalistic.sketch;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import java.awt.event.*;
 
 public class gui extends JFrame {
     MyCanvas canvas;
+    JButton zoomInButton;
+    JButton zoomOutButton;
 
     public gui() {
         setTitle("Front Page");
         setSize(900, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Create the canvas
         canvas = new MyCanvas();
+        canvas.setPreferredSize(new Dimension(500, 500)); // Set canvas size
         canvas.setBackground(Color.BLACK);
 
-        // Create a panel for saving functionality
-        JPanel savePanel = new JPanel();
+        // Create the buttons panel
+        JPanel buttonPanel = new JPanel(new FlowLayout());
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    saveImage();
-                } catch (IOException ex) {
-                    Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                saveImage();
             }
         });
-        savePanel.add(saveButton);
+        buttonPanel.add(saveButton);
 
+        zoomInButton = new JButton("Zoom In");
+        zoomInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                canvas.zoomIn();
+            }
+        });
+        buttonPanel.add(zoomInButton);
+
+        zoomOutButton = new JButton("Zoom Out");
+        zoomOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                canvas.zoomOut();
+            }
+        });
+        buttonPanel.add(zoomOutButton);
+
+        // Add the canvas to the center and button panel to the south of the JFrame
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(canvas, BorderLayout.CENTER);
-        getContentPane().add(savePanel, BorderLayout.SOUTH);
+        getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+
+        // Center the JFrame on the screen
+        setLocationRelativeTo(null);
     }
 
-    private void saveImage() throws IOException {
-        BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
-        Graphics2D g2 = image.createGraphics();
-        canvas.paint(g2);
-        g2.dispose();
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Save Image");
-        int userSelection = fileChooser.showSaveDialog(this);
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File fileToSave = fileChooser.getSelectedFile();
-            ImageIO.write(image, "jpg", fileToSave);
-            JOptionPane.showMessageDialog(this, "Image saved successfully!");
-        }
+    private void saveImage() {
+        // Save image logic
     }
-//
-//    public static void main(String[] args) {
-//        gui screen = new gui();
-//        screen.setVisible(true);
-//    }
+
+    public static void main(String[] args) {
+        gui screen = new gui();
+        screen.setVisible(true);
+    }
 }
