@@ -10,33 +10,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyCanvas extends JPanel {
-    private List<Point> currentLine;
     private List<List<Point>> lines;
-    private final Brush brush;
+    private List<Brush> brushes;
     private double scale = 1.0;
-
+    public Color Col = Color.GREEN;
     public MyCanvas() {
+        int sizeWidth = 900;
+        int sizeHeight = 800;
+        this.setPreferredSize(new Dimension(sizeWidth, sizeHeight));
+        this.setBackground(new Color(0x0a0e14));
         lines = new ArrayList<>();
-        brush = new Brush(Color.CYAN, 5); // Set default brush color and size
+        brushes = new ArrayList<>();
+        
+        // Initialize default brush
+        //Color Col = Color.BLUE;
+        addBrush(Col, 5); // Default brush color and size
 
-        addMouseListener(new MouseAdapter() {
+         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                currentLine = new ArrayList<>();
-                addPoint(e.getX(), e.getY());
+                addPoint((int) (e.getX() / scale), (int) (e.getY() / scale));
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                lines.add(new ArrayList<>(currentLine));
+               
                 repaint();
+                addBrush(Col, 5); 
             }
         });
 
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                addPoint(e.getX(), e.getY());
+                addPoint((int) (e.getX() / scale), (int) (e.getY() / scale));
                 repaint();
             }
         });
@@ -55,6 +62,7 @@ public class MyCanvas extends JPanel {
     }
 
     public void addPoint(int x, int y) {
+        List<Point> currentLine = lines.get(lines.size() - 1);
         currentLine.add(new Point(x, y));
     }
 
@@ -67,11 +75,18 @@ public class MyCanvas extends JPanel {
         scale /= 1.1;
         repaint();
     }
+
+    public void addBrush(Color color, int size) {
+        brushes.add(new Brush(color, size));
+        lines.add(new ArrayList<>());
+    }
+    
     public void clear() {
         lines.clear();
-        currentLine = null;
+        brushes.clear();
         repaint();
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -82,23 +97,18 @@ public class MyCanvas extends JPanel {
         g2d.scale(scale, scale);
 
         // Draw all lines
-        for (List<Point> line : lines) {
-            for (int i = 1; i < line.size(); i++) {
-                Point p1 = line.get(i - 1);
-                Point p2 = line.get(i);
-                brush.draw(g2d, p1, p2);
+        for (int i = 0; i < lines.size(); i++) {
+            List<Point> line = lines.get(i);
+            Brush brush = brushes.get(i);
+            g2d.setColor(brush.getColor());
+            g2d.setStroke(new BasicStroke(brush.getSize(), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+            for (int j = 1; j < line.size(); j++) {
+                Point p1 = line.get(j - 1);
+                Point p2 = line.get(j);
+                g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
             }
         }
-
-        // Draw the current line
-        if (currentLine != null) {
-            for (int i = 1; i < currentLine.size(); i++) {
-                Point p1 = currentLine.get(i - 1);
-                Point p2 = currentLine.get(i);
-                brush.draw(g2d, p1, p2);
-            }
-        }
-
+//        addBrush(Col, 5);
         g2d.dispose();
     }
 }
