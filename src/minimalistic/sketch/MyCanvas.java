@@ -14,6 +14,7 @@ public class MyCanvas extends JPanel {
     private List<Brush> brushes;
     private double scale = 1.0;
     public Color Col = Color.GREEN;
+    public int b_size = 10;
     public MyCanvas() {
         int sizeWidth = 900;
         int sizeHeight = 800;
@@ -21,10 +22,10 @@ public class MyCanvas extends JPanel {
         this.setBackground(new Color(0x0a0e14));
         lines = new ArrayList<>();
         brushes = new ArrayList<>();
-        
+       
         // Initialize default brush
         //Color Col = Color.BLUE;
-        addBrush(Col, 5); // Default brush color and size
+        addBrush(Col, b_size); // Default brush color and size
 
          addMouseListener(new MouseAdapter() {
             @Override
@@ -36,7 +37,7 @@ public class MyCanvas extends JPanel {
             public void mouseReleased(MouseEvent e) {
                
                 repaint();
-                addBrush(Col, 5); 
+                addBrush(Col, b_size); 
             }
         });
 
@@ -85,6 +86,10 @@ public class MyCanvas extends JPanel {
         lines.clear();
         brushes.clear();
         repaint();
+    }
+    public void changeBrush(int size)
+    {
+        this.b_size = size;
     }
 
     @Override
