@@ -281,11 +281,15 @@ public class PanelMenu extends javax.swing.JPanel {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+           canvus.previous_bgcolor = canvus.bgcolor;
+          canvus.bgcolor = Color.WHITE;
           canvus.setBackground(Color.WHITE);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        canvus.previous_bgcolor = canvus.bgcolor;
+        canvus.bgcolor = Color.BLUE;
         canvus.setBackground(Color.BLUE);
     }//GEN-LAST:event_jButton9ActionPerformed
     

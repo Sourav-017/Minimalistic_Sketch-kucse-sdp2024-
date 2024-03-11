@@ -18,6 +18,7 @@ public class MyCanvas extends JPanel {
     private List<List<Point>> undoneLines;
     private List<Brush> undoneBrushes;
     public Color bgcolor = new Color(0x0a0e14);
+    public Color previous_bgcolor = null;
     public MyCanvas() {
         int sizeWidth = 900;
         int sizeHeight = 800;
@@ -129,6 +130,7 @@ public class MyCanvas extends JPanel {
         for (int i = 0; i < lines.size(); i++) {
             List<Point> line = lines.get(i);
             Brush brush = brushes.get(i);
+            if(previous_bgcolor != null && brush.getColor() == previous_bgcolor) brush.setColor(bgcolor);
             g2d.setColor(brush.getColor());
             g2d.setStroke(new BasicStroke(brush.getSize(), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
             for (int j = 1; j < line.size(); j++) {
