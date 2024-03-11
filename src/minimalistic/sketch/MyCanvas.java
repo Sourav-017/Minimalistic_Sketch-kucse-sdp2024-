@@ -15,6 +15,9 @@ public class MyCanvas extends JPanel {
     private double scale = 1.0;
     public Color Col = Color.GREEN;
     public int b_size = 10;
+    private List<List<Point>> undoneLines;
+    private List<Brush> undoneBrushes;
+    
     public MyCanvas() {
         int sizeWidth = 900;
         int sizeHeight = 800;
@@ -22,7 +25,8 @@ public class MyCanvas extends JPanel {
         this.setBackground(new Color(0x0a0e14));
         lines = new ArrayList<>();
         brushes = new ArrayList<>();
-       
+        undoneLines = new ArrayList<>();
+        undoneBrushes = new ArrayList<>();
         // Initialize default brush
         //Color Col = Color.BLUE;
         addBrush(Col, b_size); // Default brush color and size
@@ -61,7 +65,23 @@ public class MyCanvas extends JPanel {
             }
         });
     }
-
+    public void undo() {
+        if (!lines.isEmpty()) {
+            // Remove last drawn line and brush
+            undoneLines.add(lines.remove(lines.size() - 1));
+            undoneBrushes.add(brushes.remove(brushes.size() - 1));
+            repaint();
+        }
+    }
+    public void redo() {
+        if (!undoneLines.isEmpty()) {
+            // Add back the last removed line and brush
+            lines.add(undoneLines.remove(undoneLines.size() - 1));
+            brushes.add(undoneBrushes.remove(undoneBrushes.size() - 1));
+            repaint();
+        }
+    }
+    
     public void addPoint(int x, int y) {
         List<Point> currentLine = lines.get(lines.size() - 1);
         currentLine.add(new Point(x, y));
@@ -69,6 +89,10 @@ public class MyCanvas extends JPanel {
 
     public void zoomIn() {
         scale *= 1.1;
+        repaint();
+    }
+    public void initial_zoom() {
+        scale = 1.0;
         repaint();
     }
 
