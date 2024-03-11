@@ -17,12 +17,12 @@ public class MyCanvas extends JPanel {
     public int b_size = 10;
     private List<List<Point>> undoneLines;
     private List<Brush> undoneBrushes;
-    
+    public Color bgcolor = new Color(0x0a0e14);
     public MyCanvas() {
         int sizeWidth = 900;
         int sizeHeight = 800;
         this.setPreferredSize(new Dimension(sizeWidth, sizeHeight));
-        this.setBackground(new Color(0x0a0e14));
+        this.setBackground(bgcolor);
         lines = new ArrayList<>();
         brushes = new ArrayList<>();
         undoneLines = new ArrayList<>();
