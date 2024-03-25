@@ -19,6 +19,9 @@ public class MyCanvas extends JPanel {
     private List<Brush> undoneBrushes;
     public Color bgcolor = new Color(0x0a0e14);
     public Color previous_bgcolor = null;
+    public int change_slider = 1;
+    public float ZoomIn_Factor = (float) 1.1, Initial_Zoom = (float) 1.0;
+    public boolean undo_action = false;
     public MyCanvas() {
         int sizeWidth = 900;
         int sizeHeight = 800;
@@ -35,12 +38,22 @@ public class MyCanvas extends JPanel {
          addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                if(undo_action == true)
+                {
+                    undo_action = false;
+                    addBrush(Col, b_size);
+                }
+                if(change_slider == 1)
+                {
+                    change_slider = 0;
+                    addBrush(Col, b_size);
+                }
                 addPoint((int) (e.getX() / scale), (int) (e.getY() / scale));
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-               
+                
                 repaint();
                 addBrush(Col, b_size); 
             }
@@ -66,12 +79,20 @@ public class MyCanvas extends JPanel {
             }
         });
     }
+    public void set_brush_size(int value)
+    {
+        b_size = value;
+        change_slider = 1;
+        //addBrush(Col, b_size);
+    }
     public void undo() {
         if (!lines.isEmpty()) {
             // Remove last drawn line and brush
             undoneLines.add(lines.remove(lines.size() - 1));
             undoneBrushes.add(brushes.remove(brushes.size() - 1));
             repaint();
+            //addBrush(Col, b_size);
+            undo_action = true;
         }
     }
     public void redo() {
@@ -89,16 +110,16 @@ public class MyCanvas extends JPanel {
     }
 
     public void zoomIn() {
-        scale *= 1.1;
+        scale *= ZoomIn_Factor;
         repaint();
     }
     public void initial_zoom() {
-        scale = 1.0;
+        scale = Initial_Zoom;
         repaint();
     }
 
     public void zoomOut() {
-        scale /= 1.1;
+        scale /= ZoomIn_Factor;
         repaint();
     }
 
@@ -116,7 +137,13 @@ public class MyCanvas extends JPanel {
     {
         this.b_size = size;
     }
-
+    public void change_bgcolor()
+    {
+        for (int i = 0; i < lines.size(); i++) {
+        Brush brush = brushes.get(i);
+        if(previous_bgcolor != null && brush.getColor() == previous_bgcolor) brush.setColor(bgcolor);    
+        }
+    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -130,7 +157,6 @@ public class MyCanvas extends JPanel {
         for (int i = 0; i < lines.size(); i++) {
             List<Point> line = lines.get(i);
             Brush brush = brushes.get(i);
-            if(previous_bgcolor != null && brush.getColor() == previous_bgcolor) brush.setColor(bgcolor);
             g2d.setColor(brush.getColor());
             g2d.setStroke(new BasicStroke(brush.getSize(), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
             for (int j = 1; j < line.size(); j++) {

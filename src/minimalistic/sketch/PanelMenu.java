@@ -4,8 +4,9 @@
  */
 package minimalistic.sketch;
 
-import java.awt.Canvas;
 import java.awt.Color;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class PanelMenu extends javax.swing.JPanel {
     MyCanvas canvus;
@@ -16,9 +17,15 @@ public class PanelMenu extends javax.swing.JPanel {
     public PanelMenu(MyCanvas can) {
         canvus = can;
         initComponents();
-        canvus.b_size = (int) jSlider1.getValue() / 5;
+        jSlider1.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int sliderValue = jSlider1.getValue();
+                canvus.set_brush_size((int) sliderValue / 5);
+            }
+        });
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,58 +35,62 @@ public class PanelMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        Clear = new java.awt.Button();
+        jColorChooser3 = new javax.swing.JColorChooser();
+        Red_color = new javax.swing.JButton();
+        White_color = new javax.swing.JButton();
+        Green_color = new javax.swing.JButton();
+        Undo = new java.awt.Button();
         jSlider1 = new javax.swing.JSlider();
         Clear1 = new java.awt.Button();
-        Clear2 = new java.awt.Button();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        Redo = new java.awt.Button();
+        ZoomIn = new javax.swing.JButton();
+        ZoomOut = new javax.swing.JButton();
+        Reset = new javax.swing.JButton();
+        Eraser = new javax.swing.JButton();
+        Background_White = new javax.swing.JButton();
+        BackgroundBlue = new javax.swing.JButton();
+        Cyan_Color = new javax.swing.JButton();
+        ColorChooser = new java.awt.Button();
+        ColorChooser1 = new java.awt.Button();
 
         setBackground(new java.awt.Color(51, 51, 51));
 
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setForeground(new java.awt.Color(255, 0, 51));
-        jButton4.setAlignmentX(0.5F);
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Red_color.setBackground(new java.awt.Color(255, 0, 0));
+        Red_color.setForeground(new java.awt.Color(255, 0, 51));
+        Red_color.setAlignmentX(0.5F);
+        Red_color.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Red_color.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Red_color.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                Red_colorActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 204));
-        jButton5.setForeground(new java.awt.Color(255, 0, 51));
-        jButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        White_color.setBackground(new java.awt.Color(255, 255, 204));
+        White_color.setForeground(new java.awt.Color(255, 0, 51));
+        White_color.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        White_color.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        White_color.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                White_colorActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(153, 153, 0));
-        jButton6.setForeground(new java.awt.Color(255, 0, 51));
-        jButton6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        Green_color.setBackground(new java.awt.Color(153, 153, 0));
+        Green_color.setForeground(new java.awt.Color(255, 0, 51));
+        Green_color.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Green_color.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Green_color.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                Green_colorActionPerformed(evt);
             }
         });
 
-        Clear.setActionCommand("Clear");
-        Clear.setLabel("Undo");
-        Clear.addActionListener(new java.awt.event.ActionListener() {
+        Undo.setActionCommand("Clear");
+        Undo.setLabel("Undo");
+        Undo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClearActionPerformed(evt);
+                UndoActionPerformed(evt);
             }
         });
 
@@ -91,61 +102,91 @@ public class PanelMenu extends javax.swing.JPanel {
             }
         });
 
-        Clear2.setActionCommand("Clear");
-        Clear2.setLabel("Redo");
-        Clear2.addActionListener(new java.awt.event.ActionListener() {
+        Redo.setActionCommand("Clear");
+        Redo.setLabel("Redo");
+        Redo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Clear2ActionPerformed(evt);
+                RedoActionPerformed(evt);
             }
         });
 
-        jButton1.setLabel("'+'");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ZoomIn.setLabel("'+'");
+        ZoomIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ZoomInActionPerformed(evt);
             }
         });
 
-        jButton2.setActionCommand("Zoom Out");
-        jButton2.setLabel("-");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ZoomOut.setActionCommand("Zoom Out");
+        ZoomOut.setLabel("-");
+        ZoomOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ZoomOutActionPerformed(evt);
             }
         });
 
-        jButton3.setActionCommand("Zoom Out");
-        jButton3.setLabel("Reset");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Reset.setActionCommand("Zoom Out");
+        Reset.setLabel("Reset");
+        Reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ResetActionPerformed(evt);
             }
         });
 
-        jButton7.setActionCommand("Zoom Out");
-        jButton7.setLabel("Eraser");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        Eraser.setActionCommand("Zoom Out");
+        Eraser.setLabel("Eraser");
+        Eraser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                EraserActionPerformed(evt);
             }
         });
 
-        jButton8.setForeground(new java.awt.Color(255, 0, 51));
-        jButton8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        Background_White.setForeground(new java.awt.Color(255, 0, 51));
+        Background_White.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Background_White.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Background_White.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                Background_WhiteActionPerformed(evt);
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(0, 0, 255));
-        jButton9.setForeground(new java.awt.Color(255, 0, 51));
-        jButton9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        BackgroundBlue.setBackground(new java.awt.Color(0, 0, 255));
+        BackgroundBlue.setForeground(new java.awt.Color(255, 0, 51));
+        BackgroundBlue.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BackgroundBlue.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackgroundBlue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                BackgroundBlueActionPerformed(evt);
+            }
+        });
+
+        Cyan_Color.setBackground(new java.awt.Color(51, 255, 255));
+        Cyan_Color.setAlignmentX(0.5F);
+        Cyan_Color.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Cyan_Color.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Cyan_Color.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cyan_ColorActionPerformed(evt);
+            }
+        });
+
+        ColorChooser.setBackground(new java.awt.Color(255, 255, 255));
+        ColorChooser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ColorChooser.setForeground(new java.awt.Color(0, 0, 102));
+        ColorChooser.setLabel("Color Chooser");
+        ColorChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ColorChooserActionPerformed(evt);
+            }
+        });
+
+        ColorChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        ColorChooser1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ColorChooser1.setForeground(new java.awt.Color(0, 0, 102));
+        ColorChooser1.setLabel("Color Chooser");
+        ColorChooser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ColorChooser1ActionPerformed(evt);
             }
         });
 
@@ -154,98 +195,112 @@ public class PanelMenu extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSlider1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Clear2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Eraser, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(Clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(23, 23, 23)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 11, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(19, 19, 19)
+                                        .addComponent(ZoomIn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(23, 23, 23)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Green_color, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(White_color, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(Redo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(BackgroundBlue, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Red_color, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Cyan_Color, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Undo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ZoomOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(Background_White, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(23, 23, 23)
+                            .addComponent(ColorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(21, 21, 21)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Green_color, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cyan_Color, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(White_color, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Red_color, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addComponent(Clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Undo, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(Redo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Clear2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ZoomIn, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(ZoomOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Reset)
+                .addGap(18, 18, 18)
+                .addComponent(Eraser)
+                .addGap(18, 18, 18)
+                .addComponent(ColorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BackgroundBlue, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Background_White, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
-        Clear.getAccessibleContext().setAccessibleName("clear");
-        jButton3.getAccessibleContext().setAccessibleName("Re");
+        Undo.getAccessibleContext().setAccessibleName("clear");
+        Reset.getAccessibleContext().setAccessibleName("Re");
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void Red_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Red_colorActionPerformed
         canvus.Col = Color.RED;
         float val = jSlider1.getValue() / 5;
         canvus.addBrush(Color.RED, (int)val); 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_Red_colorActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void White_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_White_colorActionPerformed
         canvus.Col = Color.WHITE;
         float val = jSlider1.getValue() / 5;
         canvus.addBrush(Color.WHITE, (int)val); 
         System.out.println("" + val);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_White_colorActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+    private void Green_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Green_colorActionPerformed
+
         canvus.Col = Color.GREEN;
         float val = jSlider1.getValue() / 5;
         canvus.addBrush(Color.GREEN, (int)val); 
         System.out.println("" + val);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_Green_colorActionPerformed
 
-    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+    private void UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoActionPerformed
         canvus.undo();
-    }//GEN-LAST:event_ClearActionPerformed
+    }//GEN-LAST:event_UndoActionPerformed
 
     private void Clear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clear1ActionPerformed
         canvus.clear();
@@ -253,61 +308,101 @@ public class PanelMenu extends javax.swing.JPanel {
         System.out.println("" + jSlider1.getValue());
     }//GEN-LAST:event_Clear1ActionPerformed
 
-    private void Clear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clear2ActionPerformed
+    private void RedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedoActionPerformed
         canvus.redo();
-    }//GEN-LAST:event_Clear2ActionPerformed
+    }//GEN-LAST:event_RedoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ZoomInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZoomInActionPerformed
         // TODO add your handling code here:
         canvus.zoomIn();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ZoomInActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ZoomOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZoomOutActionPerformed
         // TODO add your handling code here:
         canvus.zoomOut();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ZoomOutActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
         canvus.initial_zoom();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ResetActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void EraserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EraserActionPerformed
         Color clr = canvus.bgcolor;
         canvus.Col = clr;
         float val = jSlider1.getValue() / 5;
         canvus.addBrush(clr, (int)val); 
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_EraserActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void Background_WhiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Background_WhiteActionPerformed
         // TODO add your handling code here:
            canvus.previous_bgcolor = canvus.bgcolor;
           canvus.bgcolor = Color.WHITE;
           canvus.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jButton8ActionPerformed
+          canvus.change_bgcolor();
+    }//GEN-LAST:event_Background_WhiteActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void BackgroundBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackgroundBlueActionPerformed
         // TODO add your handling code here:
         canvus.previous_bgcolor = canvus.bgcolor;
         canvus.bgcolor = Color.BLUE;
         canvus.setBackground(Color.BLUE);
-    }//GEN-LAST:event_jButton9ActionPerformed
+        canvus.change_bgcolor();
+    }//GEN-LAST:event_BackgroundBlueActionPerformed
+
+    private void Cyan_ColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cyan_ColorActionPerformed
+        // TODO add your handling code here:
+        canvus.Col = Color.CYAN;
+        float val = jSlider1.getValue() / 5;
+        canvus.addBrush(Color.CYAN, (int)val); 
+        System.out.println("" + val);        
+    }//GEN-LAST:event_Cyan_ColorActionPerformed
+
+    private void ColorChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColorChooser1ActionPerformed
+        Color cl = Color.BLACK;
+        cl = jColorChooser3.showDialog(this, "Choose a color", cl);
+//        if(cl != null) canvus.Col = Color.WHITE;
+//        else 
+        canvus.Col = cl;
+        float val = jSlider1.getValue() / 5;
+        canvus.addBrush(cl, (int)val); 
+        System.out.println("" + val);
+    }//GEN-LAST:event_ColorChooser1ActionPerformed
+
+    private void ColorChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColorChooserActionPerformed
+        Color cl = Color.BLACK;
+        cl = jColorChooser3.showDialog(this, "Choose a color", cl);
+          
+        // TODO add your handling code here:
+          canvus.previous_bgcolor = canvus.bgcolor;
+          canvus.bgcolor = cl;
+          canvus.setBackground(cl);
+          canvus.change_bgcolor();
+    }//GEN-LAST:event_ColorChooserActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button Clear;
+    private javax.swing.JButton BackgroundBlue;
+    private javax.swing.JButton Background_White;
     private java.awt.Button Clear1;
-    private java.awt.Button Clear2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private java.awt.Button ColorChooser;
+    private java.awt.Button ColorChooser1;
+    private javax.swing.JButton Cyan_Color;
+    private javax.swing.JButton Eraser;
+    private javax.swing.JButton Green_color;
+    private javax.swing.JButton Red_color;
+    private java.awt.Button Redo;
+    private javax.swing.JButton Reset;
+    private java.awt.Button Undo;
+    private javax.swing.JButton White_color;
+    private javax.swing.JButton ZoomIn;
+    private javax.swing.JButton ZoomOut;
+    private javax.swing.JColorChooser jColorChooser3;
     private javax.swing.JSlider jSlider1;
     // End of variables declaration//GEN-END:variables
+
+    private Color jColorChooser3() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
