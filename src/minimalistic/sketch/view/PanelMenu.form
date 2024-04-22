@@ -28,60 +28,63 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jSlider1" alignment="1" pref="0" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="Eraser" min="-2" pref="63" max="-2" attributes="0"/>
-                          <Component id="Reset" min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="Reset" pref="0" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      <Component id="Clear1" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                      <Component id="ZoomIn" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="Green_color" min="-2" pref="40" max="-2" attributes="0"/>
-                                          <Component id="White_color" min="-2" pref="40" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="Redo" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Component id="ZoomIn" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="Green_color" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="White_color" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="BackgroundBlue" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="Redo" min="-2" pref="44" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="Red_color" max="32767" attributes="0"/>
                                   <Component id="Cyan_Color" max="32767" attributes="0"/>
-                                  <Component id="Undo" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="ZoomOut" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="Background_White" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="Undo" min="-2" max="-2" attributes="0"/>
+                              <Component id="ZoomOut" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="ColorChooser1" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="ColorChooser" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="BackgroundBlue" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="Background_White" min="-2" pref="40" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="ColorChooser" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="Clear1" min="-2" pref="52" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,30 +105,30 @@
                   <Component id="White_color" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="Red_color" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="Clear1" min="-2" pref="33" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Undo" pref="33" max="32767" attributes="0"/>
-                  <Component id="Redo" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Clear1" min="-2" pref="52" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="ZoomIn" pref="31" max="32767" attributes="0"/>
-                  <Component id="ZoomOut" max="32767" attributes="0"/>
+                  <Component id="Redo" pref="48" max="32767" attributes="0"/>
+                  <Component id="Undo" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ZoomIn" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="ZoomOut" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="Reset" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="Eraser" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="Reset" min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="Eraser" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="ColorChooser" min="-2" pref="59" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="BackgroundBlue" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="Background_White" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="75" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -134,10 +137,13 @@
     <Component class="javax.swing.JButton" name="Red_color">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
+          <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/orange_1.png"/>
         </Property>
         <Property name="alignmentX" type="float" value="0.5"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -156,10 +162,13 @@
     <Component class="javax.swing.JButton" name="White_color">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="ff" red="ff" type="rgb"/>
+          <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/white.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -177,10 +186,13 @@
     <Component class="javax.swing.JButton" name="Green_color">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="cc" red="33" type="rgb"/>
+          <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/lime_1.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -212,6 +224,9 @@
     <Component class="java.awt.Button" name="Clear1">
       <Properties>
         <Property name="actionCommand" type="java.lang.String" value="Clear"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="label" type="java.lang.String" value="Clear"/>
       </Properties>
       <Events>
@@ -228,9 +243,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ZoomIn">
-      <Properties>
-        <Property name="label" type="java.lang.String" value="+"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ZoomInActionPerformed"/>
       </Events>
@@ -238,7 +250,6 @@
     <Component class="javax.swing.JButton" name="ZoomOut">
       <Properties>
         <Property name="actionCommand" type="java.lang.String" value="Zoom Out"/>
-        <Property name="label" type="java.lang.String" value="-"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ZoomOutActionPerformed"/>
@@ -246,6 +257,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="Reset">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="33" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icons8-reset-36.png"/>
+        </Property>
         <Property name="actionCommand" type="java.lang.String" value="Zoom Out"/>
         <Property name="label" type="java.lang.String" value="Reset"/>
       </Properties>
@@ -307,7 +324,10 @@
     <Component class="javax.swing.JButton" name="Cyan_Color">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="33" type="rgb"/>
+          <Color blue="33" green="33" red="33" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/blue_1.png"/>
         </Property>
         <Property name="alignmentX" type="float" value="0.5"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

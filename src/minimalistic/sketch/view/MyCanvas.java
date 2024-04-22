@@ -1,7 +1,7 @@
-package minimalistic.sketch;
-
+package minimalistic.sketch.view;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.color.ColorSpace;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
@@ -17,7 +17,7 @@ public class MyCanvas extends JPanel {
     public int b_size = 10;
     private List<List<Point>> undoneLines;
     private List<Brush> undoneBrushes;
-    public Color bgcolor = new Color(0x0a0e14);
+    public Color bgcolor = (Color.white);
     public Color previous_bgcolor = null;
     public int change_slider = 1;
     public float ZoomIn_Factor = (float) 1.1, Initial_Zoom = (float) 1.0;
@@ -140,12 +140,22 @@ public class MyCanvas extends JPanel {
         scale /= ZoomIn_Factor;
         repaint();
     }
-
+    public int pointcount()
+    {
+        return brushes.size();
+    }
+   public int BrushCount()
+    {
+        return brushes.size();
+    }
     public void addBrush(Color color, int size) {
         brushes.add(new Brush(color, size));
         lines.add(new ArrayList<>());
     }
-    
+    public void setColor(Color col)
+    {
+        this.Col = col;
+    }
     public void clear() {
         lines.clear();
         brushes.clear();
