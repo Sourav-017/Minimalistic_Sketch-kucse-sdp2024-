@@ -87,11 +87,11 @@ public class MyCanvas extends JPanel {
         change_slider = 1;
         //addBrush(Col, b_size);
     }
-    float get_window_width()
+    public float get_window_width()
     {
         return sizeWidth;
     }
-    float get_window_height()
+    public float get_window_height()
     {
         return sizeHeight;
     }
@@ -102,6 +102,10 @@ public class MyCanvas extends JPanel {
     void set_window_height(float val)
     {
         sizeHeight = val;
+    }
+    public float get_scale()
+    {
+        return (float) scale;
     }
     public void undo() {
         if (!lines.isEmpty()) {
@@ -144,7 +148,8 @@ public class MyCanvas extends JPanel {
     {
         return brushes.size();
     }
-   public int BrushCount()
+    
+    public int BrushCount()
     {
         return brushes.size();
     }
@@ -194,7 +199,7 @@ public class MyCanvas extends JPanel {
                 g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
             }
         }
-//        addBrush(Col, 5);
+//      addBrush(Col, 5);
         g2d.dispose();
     }
 }

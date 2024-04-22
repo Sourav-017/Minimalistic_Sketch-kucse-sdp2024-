@@ -8,14 +8,24 @@ import minimalistic.sketch.view.*;
 import minimalistic.sketch.model.*;
 public class PanelmenuController {
     MyCanvas canvas;
+    public panelmenuModel panelmodel;
     public PanelmenuController(MyCanvas canvas)
     {
         this.canvas = canvas;
+        if(this.canvas == null)
+        {
+            System.err.println("hi");
+        }
+        panelmodel = new panelmenuModel(canvas);
     }
-    panelmenuModel panelmodel = new panelmenuModel(canvas);
-    
+
+
     public void setColor(Color col, float bsize)
     {
-        if(canvas != null) panelmodel.setColor(col, (int)bsize);
+        
+        if(canvas != null) {
+            System.out.println("Method Called");
+            panelmodel.setColor(col, (int)bsize);
+        }
     }
 }

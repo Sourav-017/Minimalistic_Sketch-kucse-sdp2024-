@@ -4,7 +4,6 @@
  */
 package minimalistic.sketch.view;
 
-import minimalistic.sketch.*;
 
 /**
  *

@@ -106,5 +106,5 @@ public class BrushIT {
         // Call the getSize method and verify that it returns the correct size
         assertEquals(size, brush.getSize(), 0.0);
     }
-  
+
 }

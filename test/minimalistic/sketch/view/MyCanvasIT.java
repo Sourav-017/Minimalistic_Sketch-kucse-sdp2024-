@@ -59,6 +59,37 @@ public class MyCanvasIT {
         instance.addBrush(test, bsize);
         instance.addBrush(test, bsize);
         assertEquals(expected, instance.BrushCount());
-    }    
-    
+    } 
+        @Test
+    public void zoom_in() {
+        
+        MyCanvas instance = new MyCanvas();
+        float expected = (float) (1.1);
+        instance.zoomIn();
+        assertEquals(expected, instance.get_scale(), 0.001);
+    } 
+    @Test
+        public void zoom_out() {
+        
+        MyCanvas instance = new MyCanvas();
+        float expected = (float) (1.0);
+        instance.zoomIn();
+        System.out.println( instance.ZoomIn_Factor);
+        instance.zoomOut();
+        System.out.println( instance.ZoomIn_Factor);
+        assertEquals(expected, instance.get_scale(), 0.001);
+    } 
+    @Test
+    public void initialZoom() {
+        
+        MyCanvas instance = new MyCanvas();
+        float expected = (float) (1.0);
+        instance.zoomIn();
+        instance.zoomIn();
+        instance.zoomIn();
+        instance.zoomIn();
+        instance.zoomIn();
+        instance.initial_zoom();
+        assertEquals(expected, instance.get_scale(), 0.001);
+    } 
 }
