@@ -12,10 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author shome
- */
 public class MyCanvasIT {
     
     public MyCanvasIT() {
@@ -47,11 +43,10 @@ public class MyCanvasIT {
         MyCanvas instance = new MyCanvas();
         instance.addPoint(10, 20);
         instance.clear();
-        // TODO review the generated test code and remove the default call to fail.
         assertEquals(expected, instance.pointcount());
     }
     @Test
-    public void add_brush() {
+    public void testadd_brush() {
         int expected = 3;
         MyCanvas instance = new MyCanvas();
         Color test = Color.BLACK;
@@ -61,7 +56,7 @@ public class MyCanvasIT {
         assertEquals(expected, instance.BrushCount());
     } 
         @Test
-    public void zoom_in() {
+    public void testzoom_in() {
         
         MyCanvas instance = new MyCanvas();
         float expected = (float) (1.1);
@@ -69,18 +64,18 @@ public class MyCanvasIT {
         assertEquals(expected, instance.get_scale(), 0.001);
     } 
     @Test
-        public void zoom_out() {
+        public void testzoom_out() {
         
         MyCanvas instance = new MyCanvas();
         float expected = (float) (1.0);
         instance.zoomIn();
-        System.out.println( instance.ZoomIn_Factor);
+        //System.out.println( instance.ZoomIn_Factor);
         instance.zoomOut();
-        System.out.println( instance.ZoomIn_Factor);
+        //System.out.println( instance.ZoomIn_Factor);
         assertEquals(expected, instance.get_scale(), 0.001);
     } 
     @Test
-    public void initialZoom() {
+    public void testinitialZoom() {
         
         MyCanvas instance = new MyCanvas();
         float expected = (float) (1.0);
@@ -91,5 +86,29 @@ public class MyCanvasIT {
         instance.zoomIn();
         instance.initial_zoom();
         assertEquals(expected, instance.get_scale(), 0.001);
-    } 
+    }
+    @Test
+    public void testset_height()
+    {
+        MyCanvas instance = new MyCanvas();
+        float expected_height = 100;
+        instance.set_window_height(100);
+        assertEquals(expected_height, instance.get_window_height(), 0.001);
+    }
+        @Test
+    public void testset_width()
+    {
+        MyCanvas instance = new MyCanvas();
+        float expected_width = 100;
+        instance.set_window_width(100);
+        assertEquals(expected_width, instance.get_window_width(), 0.001);
+    }
+    @Test
+    public void testsetBgcolor()
+    {
+        MyCanvas instance = new MyCanvas();
+        Color expected = Color.BLUE;
+        instance.set_bgcolor(Color.BLUE);
+        assertEquals(expected, instance.get_bgcolor());
+    }
 }

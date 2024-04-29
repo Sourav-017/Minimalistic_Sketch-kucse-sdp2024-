@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package minimalistic.sketch.view;
+package minimalistic.sketch.model;
 
 /**
  *
  * @author pushpita
  */
+import minimalistic.sketch.view.*;
 import java.awt.*;
 
 public class Brush {
@@ -33,12 +34,12 @@ public class Brush {
         this.size = size;
     }
 
-    Color getColor() {
+    public Color getColor() {
         return color;
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    float getSize() {
+    public float getSize() {
         return (float)size;
        // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

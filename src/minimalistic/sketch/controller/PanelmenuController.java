@@ -5,7 +5,7 @@
 package minimalistic.sketch.controller;
 import java.awt.Color;
 import minimalistic.sketch.view.*;
-import minimalistic.sketch.model.*;
+import minimalistic.sketch.model.panelmenuModel;
 public class PanelmenuController {
     MyCanvas canvas;
     public panelmenuModel panelmodel;
@@ -22,10 +22,16 @@ public class PanelmenuController {
 
     public void setColor(Color col, float bsize)
     {
-        
         if(canvas != null) {
-            System.out.println("Method Called");
             panelmodel.setColor(col, (int)bsize);
         }
     }
+    public void setBgColor(Color new_col, Color old_col)
+    {
+        System.err.println("bgcolor Called");
+        if(canvas != null) {
+            panelmodel.setBgColor(new_col, old_col);
+        }
+    }
+
 }
