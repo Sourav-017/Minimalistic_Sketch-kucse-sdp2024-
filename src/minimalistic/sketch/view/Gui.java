@@ -67,8 +67,8 @@ public class Gui extends JFrame{
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    public static void main(String[] args) {
-        new Gui().setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        new Gui().setVisible(true);
+//    }
 
 } 

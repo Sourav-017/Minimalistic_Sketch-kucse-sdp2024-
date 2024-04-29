@@ -65,7 +65,6 @@ public class PanelMenu extends javax.swing.JPanel {
         });
 
         White_color.setForeground(new java.awt.Color(255, 255, 255));
-        White_color.setIcon(new javax.swing.ImageIcon(getClass().getResource("/white.png"))); // NOI18N
         White_color.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         White_color.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         White_color.addActionListener(new java.awt.event.ActionListener() {
@@ -343,7 +342,7 @@ public class PanelMenu extends javax.swing.JPanel {
         Color cl = Color.CYAN;
         cl = jColorChooser3.showDialog(this, "Choose a color", cl);
         controller.setColor(cl, jSlider1.getValue() / s_Factor); 
-        
+
     }//GEN-LAST:event_ColorChooser1ActionPerformed
 
     private void ColorChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColorChooserActionPerformed

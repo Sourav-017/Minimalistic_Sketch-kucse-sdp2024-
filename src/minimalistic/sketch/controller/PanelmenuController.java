@@ -6,6 +6,7 @@ package minimalistic.sketch.controller;
 import java.awt.Color;
 import minimalistic.sketch.view.*;
 import minimalistic.sketch.model.panelmenuModel;
+
 public class PanelmenuController {
     MyCanvas canvas;
     public panelmenuModel panelmodel;

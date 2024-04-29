@@ -21,7 +21,6 @@ public class GuiModel {
     public GuiModel(MyCanvas canvas) {
         this.canvas = canvas;
     }
-
     public void saveImage(BufferedImage image){
         JFileChooser fileChooser = new JFileChooser();
         int result = fileChooser.showSaveDialog(canvas);
